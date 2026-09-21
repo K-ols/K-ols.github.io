@@ -53,11 +53,16 @@ nav {
     border-bottom: 1px solid #30363d;
 }
 
-.nav-left,
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 55px;
+}
+
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 45px;
 }
 
 nav a {
