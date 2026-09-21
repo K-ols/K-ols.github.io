@@ -465,6 +465,33 @@ nav,
     animation: botanicalFloat 12s ease-in-out infinite;
 }
 
+.hero-main {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-main::before {
+    content: "";
+
+    position: absolute;
+
+    top: -80px;
+    left: -80px;
+    right: -80px;
+    bottom: -80px;
+
+    background: radial-gradient(
+        ellipse at center,
+        rgba(18, 9, 24, 0.78) 0%,
+        rgba(18, 9, 24, 0.48) 45%,
+        rgba(18, 9, 24, 0) 75%
+    );
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
 /* Very subtle movement */
 @keyframes botanicalFloat {
 
