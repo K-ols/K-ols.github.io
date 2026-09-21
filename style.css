@@ -421,20 +421,14 @@ h1 {
 .botanical-background {
     position: fixed;
     inset: 0;
-
     width: 100%;
     height: 100%;
-
     overflow: hidden;
-
     pointer-events: none;
-
     z-index: 0;
 }
 
-
-/* Keep website content above leaves */
-
+/* Keep website content above the leaves */
 nav,
 .hero,
 .scroll {
@@ -444,252 +438,58 @@ nav,
 
 
 /* =========================================
-   BRANCHES
+   BOTANICAL FRAME IMAGE
 ========================================= */
 
-.branch {
+.botanical-frame {
     position: absolute;
 
-    width: 300px;
-    height: 300px;
+    /* Center the artwork */
+    top: 50%;
+    left: 50%;
+
+    /* Fill the screen while keeping proportions */
+    width: 100%;
+    height: 100%;
+
+    object-fit: fill;
+
+    transform: translate(-50%, -50%);
 
     opacity: 0.55;
+
+    /* Helps the artwork blend into the page */
+    filter:
+        brightness(0.75)
+        saturate(0.8);
+
+    animation: botanicalFloat 12s ease-in-out infinite;
 }
 
 
-/* curved vine */
-
-.branch::before {
-    content: "";
-
-    position: absolute;
-
-    width: 280px;
-    height: 180px;
-
-    border-top:
-        1px solid rgba(181, 126, 192, 0.35);
-
-    border-radius: 50%;
-
-    transform: rotate(35deg);
-}
-
-
-/* CORNERS */
-
-.branch-top-left {
-    top: -60px;
-    left: -80px;
-}
-
-.branch-top-right {
-    top: -70px;
-    right: -70px;
-
-    transform: scaleX(-1);
-}
-
-.branch-bottom-left {
-    bottom: -100px;
-    left: -80px;
-
-    transform: scaleY(-1);
-}
-
-.branch-bottom-right {
-    bottom: -100px;
-    right: -70px;
-
-    transform: scale(-1);
-}
-
-
-/* =========================================
-   LEAVES
-========================================= */
-
-.leaf,
-.floating-leaf {
-
-    position: absolute;
-
-    width: 75px;
-    height: 38px;
-
-    border-radius:
-        100% 0
-        100% 0;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            rgba(202, 154, 211, 0.7),
-            rgba(101, 61, 116, 0.35)
-        );
-
-    box-shadow:
-        inset 8px 3px 15px
-        rgba(255, 220, 255, 0.08);
-
-}
-
-
-/* subtle leaf vein */
-
-.leaf::after,
-.floating-leaf::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 75%;
-    height: 1px;
-
-    left: 10%;
-    top: 50%;
-
-    background:
-        rgba(229, 191, 235, 0.25);
-
-    transform: rotate(-20deg);
-}
-
-
-/* Individual branch leaves */
-
-.leaf-1 {
-    top: 50px;
-    left: 40px;
-
-    transform: rotate(25deg);
-}
-
-.leaf-2 {
-    top: 100px;
-    left: 110px;
-
-    width: 90px;
-    height: 45px;
-
-    transform: rotate(55deg);
-}
-
-.leaf-3 {
-    top: 165px;
-    left: 55px;
-
-    width: 65px;
-    height: 34px;
-
-    transform: rotate(75deg);
-}
-
-.leaf-4 {
-    top: 190px;
-    left: 150px;
-
-    width: 80px;
-    height: 40px;
-
-    transform: rotate(20deg);
-}
-
-
-/* =========================================
-   FLOATING LEAVES
-========================================= */
-
-.floating-leaf {
-
-    opacity: 0.25;
-
-    animation:
-        leafFloat 9s ease-in-out infinite;
-}
-
-
-.floating-1 {
-    top: 25%;
-    left: 4%;
-
-    width: 45px;
-    height: 24px;
-
-    transform: rotate(60deg);
-
-    animation-delay: -2s;
-}
-
-
-.floating-2 {
-    top: 43%;
-    right: 5%;
-
-    width: 60px;
-    height: 30px;
-
-    transform: rotate(-25deg);
-
-    animation-delay: -5s;
-}
-
-
-.floating-3 {
-    bottom: 15%;
-    left: 24%;
-
-    width: 50px;
-    height: 26px;
-
-    transform: rotate(30deg);
-
-    animation-delay: -7s;
-}
-
-
-.floating-4 {
-    bottom: 27%;
-    right: 25%;
-
-    width: 42px;
-    height: 22px;
-
-    transform: rotate(-55deg);
-
-    animation-delay: -3s;
-}
-
-
-/* =========================================
-   FLOATING ANIMATION
-========================================= */
-
-@keyframes leafFloat {
-
-    0% {
-        translate: 0 0;
+/* Very subtle movement */
+@keyframes botanicalFloat {
+
+    0%,
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
     }
 
     50% {
-        translate: 10px -15px;
+        transform:
+            translate(-50%, calc(-50% - 6px))
+            scale(1.01);
     }
-
-    100% {
-        translate: 0 0;
-    }
-
 }
 
 
 /* =========================================
-   SMALL GLOWING PARTICLES
+   GLOWING PARTICLES
 ========================================= */
 
 .spark {
-
     position: absolute;
 
     width: 3px;
@@ -700,49 +500,39 @@ nav,
     background: #d69be0;
 
     box-shadow:
-        0 0 8px
-        rgba(214, 155, 224, 0.8);
+        0 0 10px rgba(214, 155, 224, 0.85);
 
-    opacity: 0.5;
-
-    animation:
-        sparkle 5s ease-in-out infinite;
+    animation: sparkle 5s ease-in-out infinite;
 }
-
 
 .spark-1 {
     top: 23%;
-    left: 17%;
+    left: 8%;
 }
 
 .spark-2 {
-    top: 38%;
-    right: 13%;
-
+    top: 35%;
+    right: 8%;
     animation-delay: -1s;
 }
 
 .spark-3 {
-    bottom: 22%;
+    bottom: 20%;
     left: 10%;
-
     animation-delay: -3s;
 }
 
 .spark-4 {
-    bottom: 13%;
-    right: 18%;
-
+    bottom: 12%;
+    right: 15%;
     animation-delay: -4s;
 }
 
 .spark-5 {
-    top: 65%;
-    right: 6%;
-
+    top: 62%;
+    right: 5%;
     animation-delay: -2s;
 }
-
 
 @keyframes sparkle {
 
@@ -754,9 +544,8 @@ nav,
 
     50% {
         opacity: 0.8;
-        transform: scale(1.4);
+        transform: scale(1.5);
     }
-
 }
 
 
@@ -766,68 +555,21 @@ nav,
 
 @media (max-width: 700px) {
 
-    .branch {
-        transform: scale(0.65);
+    .botanical-frame {
+        width: 150%;
+        height: 100%;
         opacity: 0.35;
     }
 
-    .branch-top-right {
-        transform:
-            scaleX(-1)
-            scale(0.65);
+}
+
+
+/* Stop animations for users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .botanical-frame,
+    .spark {
+        animation: none;
     }
 
-    .branch-bottom-left {
-        transform:
-            scaleY(-1)
-            scale(0.65);
-    }
-
-    .branch-bottom-right {
-        transform:
-            scale(-1)
-            scale(0.65);
-    }
-
-    .floating-leaf {
-        opacity: 0.15;
-    }
-
-}
-/* Push botanical decorations toward the outer edges */
-
-.branch-top-left {
-    top: -90px;
-    left: -150px;
-}
-
-.branch-top-right {
-    top: -90px;
-    right: -150px;
-}
-
-.branch-bottom-left {
-    bottom: -130px;
-    left: -150px;
-}
-
-.branch-bottom-right {
-    bottom: -130px;
-    right: -150px;
-}
-
-.floating-1 {
-    left: 2%;
-}
-
-.floating-2 {
-    right: 2%;
-}
-
-.floating-3 {
-    left: 20%;
-}
-
-.floating-4 {
-    right: 20%;
 }
