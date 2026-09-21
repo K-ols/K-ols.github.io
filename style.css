@@ -794,3 +794,40 @@ nav,
     }
 
 }
+/* Push botanical decorations toward the outer edges */
+
+.branch-top-left {
+    top: -90px;
+    left: -150px;
+}
+
+.branch-top-right {
+    top: -90px;
+    right: -150px;
+}
+
+.branch-bottom-left {
+    bottom: -130px;
+    left: -150px;
+}
+
+.branch-bottom-right {
+    bottom: -130px;
+    right: -150px;
+}
+
+.floating-1 {
+    left: 2%;
+}
+
+.floating-2 {
+    right: 2%;
+}
+
+.floating-3 {
+    left: 20%;
+}
+
+.floating-4 {
+    right: 20%;
+}
